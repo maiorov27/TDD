@@ -1,6 +1,5 @@
 package app;
 
-import app.Dollar;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,18 +8,28 @@ public class DollarTest {
 
     @Test
     public void testMultiplication() {
-        Dollar five  = new Dollar(5);
-        assertThat(five.times(2)).isEqualTo(new Dollar(10));
-        assertThat(five.times(3)).isEqualTo(new Dollar(15));
+        Money five = Money.dollar(5);
+        assertThat(five.times(2)).isEqualTo(Money.dollar(10));
+        assertThat(five.times(3)).isEqualTo(Money.dollar(15));
     }
 
     @Test
-    public void testEquality(){
-        Dollar five  = new Dollar(5);
-        assertThat(new Dollar(5)).isEqualTo(new Dollar(5));
-        assertThat(new Dollar(5)).isNotEqualTo(new Dollar(6));
-        assertThat(new Franc(5)).isEqualTo(new Franc(5));
-        assertThat(new Franc(5)).isNotEqualTo(new Franc(6));
+    public void testEquality() {
+        assertThat(Money.dollar(5)).isEqualTo(Money.dollar(5));
+        assertThat(Money.dollar(5)).isNotEqualTo(Money.dollar(6));
+        assertThat(Money.dollar(5)).isNotEqualTo(Money.franc(5));
+    }
+
+    @Test
+    public void testCurrency() {
+        assertThat(Money.dollar(5).currency()).isEqualTo("USD");
+        assertThat(Money.franc(5).currency()).isEqualTo("CHF");
+    }
+
+    @Test
+    public void testSimpleAddition() {
+        Money sum = Money.dollar(5).plus(Money.dollar(5));
+        assertThat(sum).isEqualTo(Money.dollar(10));
     }
 
 
