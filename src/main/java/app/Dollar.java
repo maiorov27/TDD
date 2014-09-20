@@ -1,7 +1,6 @@
 package app;
 
-public class Dollar {
-    private int amount;
+public class Dollar extends Money {
 
     public Dollar(int i) {
         this.amount = i;
@@ -11,12 +10,12 @@ public class Dollar {
         return new Dollar(amount * number);
     }
 
-    public boolean equals(Object o) {
-
-        if (! (o instanceof Dollar))
-            return false;
-
-        Dollar that = (Dollar) o;
-        return this.amount == that.amount;
-    }
+//    public boolean equals(Object o) {
+//
+//        if (! (o instanceof Dollar))
+//            return false;
+//
+//        Dollar that = (Dollar) o;
+//        return this.amount == that.amount;
+//    }
 }
