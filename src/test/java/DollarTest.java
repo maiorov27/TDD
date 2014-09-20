@@ -9,7 +9,13 @@ public class DollarTest {
     public void testMultiplication() {
         Dollar five  = new Dollar(5);
         Dollar product = five.times(2);
-        assertThat(product).isEqualTo(10);
+        assertThat(product.amount).isEqualTo(10);
+    }
+
+    @Test
+    public void testEquality(){
+        Dollar five  = new Dollar(5);
+        assertThat(new Dollar(5)).isEqualTo(new Dollar(5));
     }
 
 
