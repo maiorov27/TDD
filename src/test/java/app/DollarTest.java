@@ -51,11 +51,29 @@ public class DollarTest {
         assertThat(result).isEqualTo(Money.dollar(1));
     }
 
-    public void testReduceMoneyDifferentCurrency(){
+    @Test
+    public void testReduceMoneyDifferentCurrency() {
         Bank bank = new Bank();
         bank.addRate("CHF", "USD", 2);
-        Money result = bank.reduce(Money.franc(10),"USD");
+        Money result = bank.reduce(Money.franc(2), "USD");
         assertThat(result).isEqualTo(Money.dollar(1));
+    }
+
+    @Test
+    public void testIndentityRate() {
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        assertThat(bank.rate("USD", "USD")).isEqualTo(1);
+    }
+
+    @Test
+    public void testMixedCurrency() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF","USD",2);
+        Money rezult = bank.reduce(fiveBucks.plus(tenFrancs),"USD");
+        assertThat(rezult).isEqualTo(Money.dollar(10));
     }
 
 
