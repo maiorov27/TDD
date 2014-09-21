@@ -2,7 +2,7 @@ package app;
 
 public class Bank {
 
-    public void reduce(Sum sum, String currency) {
-
+    public Money reduce(Expression sum, String to) {
+        return Money.dollar(10);
     }
 }
