@@ -1,11 +1,12 @@
 package app;
 
 public class Sum implements Expression {
-    private int augend;
-    private int addend;
+    private Money augend;
+    private Money addend;
 
-    public Sum(int augend, int addend) {
-
+    public Sum(Money augend, Money addend) {
+        this.augend = augend;
+        this.addend = addend;
     }
 
 
