@@ -28,7 +28,8 @@ public class DollarTest {
 
     @Test
     public void testSimpleAddition() {
-        Money sum = Money.dollar(5).plus(Money.dollar(5));
+        Bank bank = new Bank();
+        Expression sum = Money.dollar(5).plus(Money.dollar(5));
         assertThat(sum).isEqualTo(Money.dollar(10));
     }
 
